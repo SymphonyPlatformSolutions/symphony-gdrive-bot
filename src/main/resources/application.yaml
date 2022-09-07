@@ -1,0 +1,10 @@
+bdk:
+  host: develop2.symphony.com
+  bot:
+    username: gdrive-bot
+    privateKey:
+      path: rsa/privatekey.pem
+
+logging:
+  level:
+    com.symphony: info
