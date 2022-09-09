@@ -15,10 +15,15 @@ To get started integrating with the Google Drive, you need to enable the Drive A
 To enable the Drive API, complete these steps:
 1. Go to the [Google API Console](https://console.developers.google.com/)
 2. Select a project
+
 ![Google API Console](images/google_project.png?raw=true "Google API Console")
+
 3. In the sidebar on the left, click on **APIs & Services** and select APIs
+
 ![APIs & Services](images/google_apis_services.png?raw=true "APIs & Services")
+
 4. From the **Library** list of available APIs, click the **Google Drive API** link and click **Enable** API.
+
 ![Google Drive API](images/google_drive_api.png?raw=true "Google Drive API")
 
 ### Google Drive API Credentials
