@@ -8,3 +8,7 @@ bdk:
 logging:
   level:
     com.symphony: info
+
+spring:
+  jmx.enabled: false
+  main.banner-mode: off
