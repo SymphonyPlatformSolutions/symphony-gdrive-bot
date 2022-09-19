@@ -60,7 +60,7 @@ public class GDriveCommand extends CommandActivity<CommandContext> {
         Callable<List<String>> permissionsCall = gdrive.getPermissions(fileId);
         Callable<List<Long>> roomMembersCall = () -> streams.listRoomMembers(context.getStreamId()).stream().map(MemberInfo::getId).toList();
 
-        ExecutorService service = Executors.newFixedThreadPool(2);
+        ExecutorService service = Executors.newFixedThreadPool(3);
         service.submit(fileNameCall);
         service.submit(permissionsCall);
         if (isRoom) {
