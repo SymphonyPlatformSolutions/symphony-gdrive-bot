@@ -21,11 +21,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class GDriveService {
+    @Value("${gdrive-bot.host}")
+    private String host;
     private static final String APPLICATION_NAME = "Google Drive API Java Quickstart";
     private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
@@ -41,7 +44,7 @@ public class GDriveService {
             .build();
     }
 
-    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    private Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
         InputStream in = GDriveService.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
         if (in == null) {
             in = new FileInputStream("." + CREDENTIALS_FILE_PATH);
@@ -51,7 +54,8 @@ public class GDriveService {
             .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
             .setAccessType("offline")
             .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder()
+            .setHost(host).setCallbackPath("/gdrive").setPort(80).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 

@@ -12,3 +12,5 @@ logging:
 spring:
   jmx.enabled: false
   main.banner-mode: off
+
+gdrive-bot.host: localhost
