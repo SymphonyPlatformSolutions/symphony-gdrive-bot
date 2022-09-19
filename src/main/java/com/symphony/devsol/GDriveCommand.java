@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 @Service
 @RequiredArgsConstructor
 public class GDriveCommand extends CommandActivity<CommandContext> {
-    private final Pattern p = Pattern.compile(".*(https://docs.google.com/[^ ]*).*");
+    private final Pattern p = Pattern.compile(".*(https://(docs|drive).google.com/[^ ]*).*");
     private final MessageService messages;
     private final StreamService streams;
     private final UserService users;
